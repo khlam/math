@@ -5,3 +5,22 @@
     width: 100%;
     text-align: center;
  }
+
+input[type="number"]{
+    font-size: 24px;
+    width: 50px;
+    padding-left: 1%;
+    border: none;
+    text-decoration:none;
+    outline: none;
+}
+
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

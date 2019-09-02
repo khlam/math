@@ -12,8 +12,7 @@
             <div class= "col-10">
                 <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a><a href="./math.html" style="text-decoration:none">/math</a></h2>
                 <h4>Simple math practice generator.</h4>
-                <p>Refresh your math skills by solving addition, subtraction, division and multiplication problems.</p>
-                <p>Runs in your current browser session, refresh to reset.</p> 
+                <p>Refresh your math skills by solving addition, subtraction, division and multiplication problems. Runs in your browser session, refresh to reset.</p> 
             </div>
         </div>
 
@@ -32,8 +31,16 @@
         <div id="division" class="row" style="display: none">
             <div class= "col-10">
                 <h1>Division</h1>
-                <h3>Dividend ranges from <input type="number" id="divisionDividend_LOWER" value=1></input> to <input type="number" id="divisionDividend_UPPER" value=50></input></h3>
-                <h3>Divisor ranges from <input type="number" id="divisionDivisor_LOWER" value=1></input> to <input type="number" id="divisionDivisor_UPPER" value=9></input></h3>
+                <h3>Dividend ranges from
+                    <input type="number" id="divisionDividend_LOWER" value=1></input>
+                    to
+                    <input type="number" id="divisionDividend_UPPER" value=50></input>
+                </h3>
+                <h3>Divisor ranges from
+                    <input type="number" id="divisionDivisor_LOWER" value=1></input>
+                    to
+                    <input type="number" id="divisionDivisor_UPPER" value=9></input>
+                </h3>
             </div>
         </div>
 
@@ -53,12 +60,14 @@
         var params = {meta: 0, init:null}, watcher = function(propertyName, oldValue, newValue) {
             console.log(params.init)
 
+            // Hide/Show start button
             if (params.init.addition || params.init.subtraction || params.init.multiplication || params.init.division) {
                 document.getElementById('startButton').style.display = "block";
             }else {
                 document.getElementById('startButton').style.display = "none";
             }
             
+            // Hide/show set ranges for the respective problem type
             if (params.init.addition){
                 document.getElementById('addition').style.display = "block";
             }else {
