@@ -2,78 +2,41 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/simple-grid.min.css">
     <link rel="stylesheet" href="./css/style.css">
+
+    <script src="./js/os.js"></script>
+    <script src="./js/param.js"></script>
+    <script src="./js/jquery-git.js"></script>
+
     <body>
         <div class="row">
             <div class= "col-6">
-                <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a>/math</h2>
-                <h4>Simple math practice generator.</h4><p>Refresh your math skills by solving addition, subtraction, division and multiplication problems.</p> 
+                <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a> /math</h2>
+                <h4>Simple math practice generator.</h4>
+                <p>Refresh your math skills by solving addition, subtraction, division and multiplication problems.</p>
+                <p>This application runs in the browser. Refresh to reset.</p> 
             </div>
         </div>
 
-        <div class="row">
-            <input type="checkbox" id="add" onClick="initGenProblems()">Addition<br>
-            <input type="checkbox" id="sub" onClick="initGenProblems()">Subtraction<br>
-            <input type="checkbox" id="mul" onClick="initGenProblems()">Multiplication<br>
-            <input type="checkbox" id="div" onClick="initGenProblems()">Division<br>
+        <div id="chooseProblems" class="row">
+            <input type="checkbox" id="add" onClick="params['init'] = initGenProblems()">Addition<br>
+            <input type="checkbox" id="sub" onClick="params['init'] = initGenProblems()">Subtraction<br>
+            <input type="checkbox" id="mul" onClick="params['init'] = initGenProblems()">Multiplication<br>
+            <input type="checkbox" id="div" onClick="params['init'] = initGenProblems()">Division<br>
         </div>
 
+        <div class="footer">
+            <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p>
+        </div>
     </body>
-
-    <div class="footer">
-        <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p>
-    </div>
-
-    <script>
-            function initGenProblems() {
-                // Types of problems to generate
-                let addition = document.getElementById("add").checked;
-                let subtraction = document.getElementById("sub").checked;
-                let multiplication = document.getElementById("mul").checked;
-                let division = document.getElementById("div").checked;
-
-                // Generate addition problems in range A - B
-                if (addition === true) {
-                    console.log('Now generating addition problems');
-
-                    let additionA = 0;
-                    let additionB = 0;
-                    let allowAdditionNegative = false;
-                }
-        
-                // Generate subtraction problems in range A - B
-                if (subtraction === true) {
-                    console.log('Now generating subtraction problems');
-
-                    let subtractionA = 0;
-                    let subtractionB = 0;
-                    let allowSubtractionNegative = false;
-                }
-        
-                // Generate multiplication problems in range A - B
-                if (multiplication === true) {
-                    console.log('Now generating multiplication problems');
-
-                    let multiplicationA = 0;
-                    let multiplicationB = 0;
-                    let allowMultiplicationNegative = false;
-                }
-        
-                // Generate multiplication problems in range A - B
-                if (division === true) {
-                    console.log('Now generating division problems');
-
-                    // Set range of Dividend
-                    let divisionDividendA = 0;
-                    let divisionDividendB = 0;
-        
-                    // Set range of Divisor
-                    let divisionDivisorA = 0;
-                    let divisionDivisorB = 0;
-                    let allowDivisionNegative = false;
-                }
-            }
-            let count = 0; // Problem count
     
-        </script>
+    <script>
+        let count = 0; // Problem count
+        // Init parameter watcher
+        var params = initGenProblems(), watcher = function(propertyName, oldValue, newValue) {
+            console.log(params['init'])
+        };
+        watch(params, 'init', watcher);
+    </script>
+
     
 </html>
