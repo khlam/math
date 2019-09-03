@@ -1,65 +1,43 @@
-function generateDivision(param) {
+function generateDivision(param) { // wait why do this just multiply the divisor x times until it reaches the upper bound of the dividend
     return new Promise((resolve) => {
         let divisionDividend_LOWER = param.init.divisionDividend_LOWER
         let divisionDividend_UPPER = param.init.divisionDividend_UPPER
         let divisionDivisor_LOWER = param.init.divisionDivisor_LOWER
         let divisionDivisor_UPPER = param.init.divisionDivisor_UPPER
 
-        let generateComplete = false
+        let divisor = rand(divisionDivisor_LOWER, divisionDivisor_UPPER)
+        getPossibleDividends(divisor, divisionDividend_UPPER, divisionDivisor_LOWER).then(allDividends => {
+            return dividend = allDividends[rand(0, allDividends.length - 1)]
+        }).then(dividend => {
+            if (dividend != undefined){
+                console.log(dividend)
+                return resolve(
+                    {
+                        a: dividend,
+                        b: divisor,
+                        c: dividend / divisor,
+                    })
+            }
+        })
+    })
+}
 
-        do {
-            let dividend = rand(divisionDividend_LOWER, divisionDividend_UPPER)
-            let factors = getFactors(dividend)
-
-            factors = factors.filter((x) => { return x >= divisionDivisor_LOWER})
-            factors = factors.filter((x) => { return x <= divisionDivisor_UPPER})
-            if (factors.length - 2 >= 1){
-                generateComplete = true
-                dividendAndFactors(dividend, factors).then(val => {
-                    if (val !== false) {
-                        return resolve(val)
-                    }
-                })
+function getPossibleDividends(divisor, divisionDividend_UPPER, divisionDivisor_LOWER) {
+    return new Promise((resolve) => {
+        let dividends = []
+        for (i = 1; i < divisionDividend_UPPER; i++) {
+            val = divisor * i
+            if (val <= divisionDividend_UPPER && val >= divisionDivisor_LOWER) {
+                dividends.push(divisor * i)
             }else {
-                continue
+                return resolve(dividends)
             }
         }
-        while (!generateComplete);
     })
-}
 
-function dividendAndFactors(dividend, factors) {
-    return new Promise((resolve) => {
-        factors.push(dividend)
-        b = factors[rand(0, factors.length - 1)]
-        result = {
-            a : dividend,
-            b : b,
-            c : dividend / b
-        }
-        return resolve(result)
-    })
-}
-
-function getFactors(integer){
-    var factors = [],
-    quotient = 0;
-
-    for(var i = 1; i <= integer; i++){
-        quotient = integer/i;
-
-        if(quotient === Math.floor(quotient)){
-        factors.push(i); 
-        }
-    }
-    return factors;
 }
 
 // Randomly prune 1
 function pruneOne() {
     return rand(0, 1)
-}
-
-function answerIsInteger(x) {
-    return Number.isInteger(x)
 }

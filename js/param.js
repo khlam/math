@@ -24,6 +24,6 @@ function initGenProblems() {
             divisionDivisor_UPPER : document.getElementById("divisionDivisor_UPPER").value,
             allowDivisionNegative : false,
         }
-    console.log(`initGenProblems() > ${JSON.stringify(init)}`)
+    //console.log(`initGenProblems() > ${JSON.stringify(init)}`)
     return init
 }
