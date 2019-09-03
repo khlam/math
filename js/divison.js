@@ -1,4 +1,4 @@
-function generateDivision(param) { // wait why do this just multiply the divisor x times until it reaches the upper bound of the dividend
+function generateDivision(param) {
     return new Promise((resolve) => {
         let divisionDividend_LOWER = param.init.divisionDividend_LOWER
         let divisionDividend_UPPER = param.init.divisionDividend_UPPER
