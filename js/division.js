@@ -8,17 +8,15 @@ function generateDivision(param) {
             getPossibleDividends(divisor, divisionDividend_UPPER, divisionDivisor_LOWER).then(allDividends => {
                 return allDividends.filter((x) => { return x >= divisionDividend_LOWER})
             }).then(prunedDividends => {
-                console.log(prunedDividends)
                 return prunedDividends[rand(0, prunedDividends.length - 1)]
             }).then(dividend => {
-                console.log(dividend)
-                console.log(divisor)
                 if (dividend != undefined){
                     return resolve(
                         {
                             a: dividend,
                             b: divisor,
                             c: dividend / divisor,
+                            t: "division",
                         })
                     }
                 })
@@ -50,9 +48,4 @@ function getPossibleDividends(divisor, divisionDividend_UPPER, divisionDivisor_L
             }
         }
     })
-}
-
-// Randomly prune 1
-function pruneOne() {
-    return rand(0, 1)
 }

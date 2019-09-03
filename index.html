@@ -6,7 +6,8 @@
     <script src="./js/os.js"></script>
     <script src="./js/param.js"></script>
     <script src="./js/rng.js"></script>
-    <script src="./js/divison.js"></script>
+    <script src="./js/division.js"></script>
+    <script src="./js/QA.js"></script>
     <script src="./js/jquery-git.js"></script>
 
     <body>
@@ -39,7 +40,7 @@
                         <input type="number" id="divisionDividend_UPPER" value=144></input>
                     </h3>
                     <h3>Divisor ranges from
-                        <input type="number" id="divisionDivisor_LOWER" value=5></input>
+                        <input type="number" id="divisionDivisor_LOWER" value=1></input>
                         to
                         <input type="number" id="divisionDivisor_UPPER" value=12></input>
                     </h3>
@@ -51,10 +52,8 @@
             </div>
         </div>
 
-        <div id="currentProblem">
-            <button onClick="_generateProblem(params)">test</button>
-        </div>
-       
+        <div id="currentProblem" class="row"></div>
+        <button onClick="_generateProblem(params)">test</button>
         <div class="footer">
             <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p>
         </div>
@@ -102,7 +101,7 @@
     <script>
         function _generateProblem(params) {
             params.init = initGenProblems()
-            generateProblem(params).then(val => console.log(val))
+            generateProblem(params).then(question => {document.getElementById('addition').innerHTML = display(question);console.log(display(question))})
         }
         function hideParams() {
             document.getElementById('params').style.display = "none";
