@@ -101,6 +101,7 @@
     
     <script>
         function _generateProblem(params) {
+            params.init = initGenProblems()
             generateProblem(params).then(val => console.log(val))
         }
         function hideParams() {
