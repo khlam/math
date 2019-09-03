@@ -5,6 +5,8 @@
 
     <script src="./js/os.js"></script>
     <script src="./js/param.js"></script>
+    <script src="./js/rng.js"></script>
+    <script src="./js/divison.js"></script>
     <script src="./js/jquery-git.js"></script>
 
     <body>
@@ -16,38 +18,43 @@
             </div>
         </div>
 
-        <div id="chooseProblems" class="row">
-            <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition<br>
-            <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction<br>
-            <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication<br>
-            <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division<br>
-        </div>
-
-
-        <div id="addition" class="row" style="display: none">Set addition Params</div>
-        <div id="subtraction" class="row" style="display: none">Set subtraction Params</div>
-        <div id="multiplication" class="row" style="display: none">Set multiplication Params</div>
-
-        <div id="division" class="row" style="display: none">
-            <div class= "col-10">
-                <h1>Division</h1>
-                <h3>Dividend ranges from
-                    <input type="number" id="divisionDividend_LOWER" value=1></input>
-                    to
-                    <input type="number" id="divisionDividend_UPPER" value=50></input>
-                </h3>
-                <h3>Divisor ranges from
-                    <input type="number" id="divisionDivisor_LOWER" value=1></input>
-                    to
-                    <input type="number" id="divisionDivisor_UPPER" value=9></input>
-                </h3>
+        <div id="params">
+            <div id="chooseProblems" class="row">
+                <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition<br>
+                <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction<br>
+                <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication<br>
+                <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division<br>
+            </div>
+        
+            <div id="addition" class="row" style="display: none">Set addition Params</div>
+            <div id="subtraction" class="row" style="display: none">Set subtraction Params</div>
+            <div id="multiplication" class="row" style="display: none">Set multiplication Params</div>
+    
+            <div id="division" class="row" style="display: none">
+                <div class= "col-10">
+                    <h1>Division</h1>
+                    <h3>Dividend ranges from
+                        <input type="number" id="divisionDividend_LOWER" value=1></input>
+                        to
+                        <input type="number" id="divisionDividend_UPPER" value=144></input>
+                    </h3>
+                    <h3>Divisor ranges from
+                        <input type="number" id="divisionDivisor_LOWER" value=1></input>
+                        to
+                        <input type="number" id="divisionDivisor_UPPER" value=12></input>
+                    </h3>
+                </div>
+            </div>
+    
+            <div id="startButton" style="display: none">
+                <button onClick="initGenProblems(); hideParams();">Start!</button>
             </div>
         </div>
 
-        <div id="startButton" style="display: none">
-            <button onClick="initGenProblems()">Start!</button>
+        <div id="currentProblem">
+            <button onClick="_generateProblem(params)">test</button>
         </div>
-
+       
         <div class="footer">
             <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p>
         </div>
@@ -92,4 +99,13 @@
         watch(params, 'init', watcher)
     </script>
     
+    <script>
+        function _generateProblem(params) {
+            generateProblem(params).then(val => console.log(val))
+        }
+        function hideParams() {
+            document.getElementById('params').style.display = "none";
+        }
+    </script>
+
 </html>
