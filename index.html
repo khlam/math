@@ -14,17 +14,19 @@
         <div class="row">
             <div class= "col-10">
                 <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a><a href="./math.html" style="text-decoration:none">/math</a></h2>
-                <h4>Simple math practice generator.</h4>
-                <p>Refresh your math skills by solving addition, subtraction, division and multiplication problems. Runs in your browser session, refresh to reset.</p> 
+                <h4 name="title-banner">Simple math practice generator.</h4>
+                <p name="title-banner">Refresh your math skills by solving addition, subtraction, division and multiplication problems. Runs in your browser session, refresh to reset.</p> 
             </div>
         </div>
 
         <div id="params">
             <div id="chooseProblems" class="row">
-                <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition<br>
-                <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction<br>
-                <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication<br>
-                <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division<br>
+                <div class= "col-12" style='text-align: center;'>
+                    <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition</input>
+                    <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction</input>
+                    <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication</input>
+                    <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division</input>
+                </div>
             </div>
         
             <div id="addition" class="row" style="display: none">Set addition Params</div>
@@ -32,7 +34,7 @@
             <div id="multiplication" class="row" style="display: none">Set multiplication Params</div>
     
             <div id="division" class="row" style="display: none">
-                <div class= "col-10">
+                <div class= "col-12" style='text-align: center;'>
                     <h1>Division</h1>
                     <h3>Dividend ranges from
                         <input type="number" id="divisionDividend_LOWER" value=1></input>
@@ -46,22 +48,19 @@
                     </h3>
                 </div>
             </div>
-    
-            <div id="startButton" style="display: none">
-                <button onClick="initGenProblems(); hideParams();">Start!</button>
-            </div>
-        </div>
+            
+            <button id="startButton" onClick="_generateProblem(params)" style="display: none">Start!</button>
 
+        </div>
         <div id="currentProblem" class="row"></div>
-        <button onClick="_generateProblem(params)">test</button>
+
+        
         <div class="footer">
-            <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p>
+            <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p> <button onClick="_generateProblem(params)">test</button>
         </div>
     </body>
     
-    <script>
-        let solved = 0; // count number of solved problems
-        
+    <script>        
         // Parameter watcher, defines what kind of problems to generate
         var params = {meta: 0, init:null}, watcher = function(propertyName, oldValue, newValue) {
             console.log(params.init)
@@ -99,13 +98,26 @@
     </script>
     
     <script>
+
         function _generateProblem(params) {
+            _hideParams()
+            _reduceTitleBannerSize()
             params.init = initGenProblems()
-            generateProblem(params).then(question => {document.getElementById('addition').innerHTML = display(question);console.log(display(question))})
+            generateProblem(params).then(question => {
+                console.log(question)
+                document.getElementById('currentProblem').innerHTML=display(question);
+            })
         }
-        function hideParams() {
+
+        function _hideParams() {
             document.getElementById('params').style.display = "none";
         }
+
+        function _reduceTitleBannerSize() {
+            document.getElementsByName('title-banner')[0].style.fontSize = "12px";
+            document.getElementsByName('title-banner')[1].style.fontSize = "12px";
+        }
+
     </script>
 
 </html>
