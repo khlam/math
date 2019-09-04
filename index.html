@@ -54,7 +54,10 @@
         </div>
         <div id="currentProblem" class="row"></div>
 
-        
+        <div id="questionHistory" class="row">
+            <table id="questionHistoryTable"></table>
+        </div>
+
         <div class="footer">
             <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="./openSource.html" style="text-decoration:none">Open Source</a></p> <button onClick="_generateProblem(params)">test</button>
         </div>
@@ -98,14 +101,18 @@
     </script>
     
     <script>
-
+        let questionCount = 0
         function _generateProblem(params) {
             _hideParams()
             _reduceTitleBannerSize()
             params.init = initGenProblems()
             generateProblem(params).then(question => {
+                questionCount+=1
                 console.log(question)
-                document.getElementById('currentProblem').innerHTML=display(question);
+                document.getElementById('currentProblem').innerHTML=display(question, questionCount, params);
+                return question
+            }).then(question => {
+                _recordQuestion(question, questionCount)
             })
         }
 
@@ -118,6 +125,19 @@
             document.getElementsByName('title-banner')[1].style.fontSize = "12px";
         }
 
+        function _recordQuestion(data, questionCount) {
+            $("#questionHistoryTable").prepend(recordQuestion(data, questionCount));
+        }
+
+        function _submitAnswer(e, correctAnswer, questionNumber, params) {
+            if (e.keyCode == 13) {
+                if (submitAnswer(correctAnswer, questionNumber)) {
+                _generateProblem(params)
+                setTimeout(function(){document.getElementById("answerBox").focus()}, 5)
+                return
+                }
+            }
+        }
     </script>
 
 </html>

@@ -8,9 +8,6 @@
 
 input[type="number"]{
     font-size: 24px;
-    width: 50px;
-    padding-left: 1%;
-    border: none;
     text-decoration:none;
     outline: none;
 }
@@ -21,10 +18,18 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     margin: 0;
 }
 
-input[type="number"] {
-    -moz-appearance: textfield;
+input[type="number"]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
+  }
+.question {
+    font-size: 1em;
 }
 
-title-banner {
+.correctAnswer {
+    background-color: green;
+}
 
+.wrongAnswer {
+    background-color: red;
 }
