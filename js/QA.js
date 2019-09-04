@@ -25,15 +25,18 @@ function display(data, questionNumber){
 function submitAnswer(correctAnswer, questionNumber){
     let userAnswer = document.getElementById('answerBox').value
     console.log(`C:${correctAnswer} U:${userAnswer}`)
-    if (parseInt(correctAnswer) === parseInt(userAnswer)) {
-        document.getElementById("r_"+questionNumber).insertCell(-1).innerHTML = `<td class="correctAnswer" style="background-color:green;">${correctAnswer}</td>` 
+    let cell = document.getElementById("r_"+questionNumber).insertCell(-1)
+    if ((userAnswer !== '') && (parseInt(correctAnswer) === parseInt(userAnswer))) {
+        cell.className = "correctAnswer"
+        cell.innerHTML = `${correctAnswer}` 
         return true
     }else {
-        document.getElementById("r_"+questionNumber).insertCell(-1).innerHTML = `<td class="wrongAnswer" style="background-color:red;">${userAnswer}</td>`
+        cell.className = "wrongAnswer"
+        cell.innerHTML = `${userAnswer}`
         return false
     }
 }
 
 function recordQuestion(data, questionNumber) {
-    return `<tr id='r_${questionNumber}'><td id='q_${questionNumber}'>${question(data)}</td></tr>`
+    return `<tr id='r_${questionNumber}'><td id='q_${questionNumber}'>${question(data)}</td> <td> </td></tr>`
 }

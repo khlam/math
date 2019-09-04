@@ -18,18 +18,17 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     margin: 0;
 }
 
-input[type="number"]:focus {
-    outline: none;
-    box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
-  }
+
 .question {
     font-size: 1em;
 }
 
-.correctAnswer {
+td.correctAnswer {
     background-color: green;
+    color: white;
 }
 
-.wrongAnswer {
+td.wrongAnswer {
     background-color: red;
+    color: white;
 }
