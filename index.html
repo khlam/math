@@ -1,3 +1,143 @@
 <html>
-    Hello world!
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/simple-grid.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="./js/os.js"></script>
+    <script src="./js/param.js"></script>
+    <script src="./js/rng.js"></script>
+    <script src="./js/division.js"></script>
+    <script src="./js/QA.js"></script>
+    <script src="./js/jquery-git.js"></script>
+
+    <body>
+        <div class="row">
+            <div class= "col-10">
+                <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a>/math</h2>
+                <h4 name="title-banner">Simple math practice generator.</h4>
+                <p name="title-banner">Refresh your math skills by solving addition, subtraction, division and multiplication problems. Runs in your browser session, refresh to reset.</p> 
+            </div>
+        </div>
+
+        <div id="params">
+            <div id="chooseProblems" class="row">
+                <div class= "col-12" style='text-align: center;'>
+                    <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition</input>
+                    <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction</input>
+                    <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication</input>
+                    <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division</input>
+                </div>
+            </div>
+        
+            <div id="addition" class="row" style="display: none">Set addition Params</div>
+            <div id="subtraction" class="row" style="display: none">Set subtraction Params</div>
+            <div id="multiplication" class="row" style="display: none">Set multiplication Params</div>
+    
+            <div id="division" class="row" style="display: none">
+                <div class= "col-12" style='text-align: center;'>
+                    <h1>Division</h1>
+                    <h3>Dividend ranges from
+                        <input type="number" id="divisionDividend_LOWER" value=1></input>
+                        to
+                        <input type="number" id="divisionDividend_UPPER" value=144></input>
+                    </h3>
+                    <h3>Divisor ranges from
+                        <input type="number" id="divisionDivisor_LOWER" value=1></input>
+                        to
+                        <input type="number" id="divisionDivisor_UPPER" value=12></input>
+                    </h3>
+                </div>
+            </div>
+            
+            <button id="startButton" onClick="_generateProblem(params)" style="display: none">Start!</button>
+
+        </div>
+        <div id="currentProblem" class="row"></div>
+
+        <div id="questionHistory" class="row">
+            <table id="questionHistoryTable"></table>
+        </div>
+
+        <div class="footer">
+            <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="https://github.com/khlam/math" style="text-decoration:none">Open Source</a></p>
+        </div>
+    </body>
+    
+    <script>        
+        // Parameter watcher, defines what kind of problems to generate
+        var params = {meta: 0, init:null}, watcher = function(propertyName, oldValue, newValue) {
+            console.log(params.init)
+
+            // Hide/Show start button
+            if (params.init.addition || params.init.subtraction || params.init.multiplication || params.init.division) {
+                document.getElementById('startButton').style.display = "block";
+            }else {
+                document.getElementById('startButton').style.display = "none";
+            }
+            
+            // Hide/show set ranges for the respective problem type
+            if (params.init.addition){
+                document.getElementById('addition').style.display = "block";
+            }else {
+                document.getElementById('addition').style.display = "none";
+            }
+            if (params.init.subtraction){
+                document.getElementById('subtraction').style.display = "block";
+            }else {
+                document.getElementById('subtraction').style.display = "none";
+            }
+            if (params.init.multiplication){
+                document.getElementById('multiplication').style.display = "block";
+            }else {
+                document.getElementById('multiplication').style.display = "none";
+            }
+            if (params.init.division){
+                document.getElementById('division').style.display = "block";
+            }else {
+                document.getElementById('division').style.display = "none";
+            }
+        }
+        watch(params, 'init', watcher)
+    </script>
+    
+    <script>
+        let questionCount = 0
+        function _generateProblem(params) {
+            _hideParams()
+            _reduceTitleBannerSize()
+            params.init = initGenProblems()
+            generateProblem(params).then(question => {
+                questionCount+=1
+                console.log(question)
+                document.getElementById('currentProblem').innerHTML=display(question, questionCount, params);
+                return question
+            }).then(question => {
+                _recordQuestion(question, questionCount)
+            })
+        }
+
+        function _hideParams() {
+            document.getElementById('params').style.display = "none";
+        }
+
+        function _reduceTitleBannerSize() {
+            document.getElementsByName('title-banner')[0].style.fontSize = "12px";
+            document.getElementsByName('title-banner')[1].style.fontSize = "12px";
+        }
+
+        function _recordQuestion(data, questionCount) {
+            $("#questionHistoryTable").prepend(recordQuestion(data, questionCount));
+        }
+
+        function _submitAnswer(e, correctAnswer, questionNumber, params) {
+            if (e.keyCode == 13) {
+                if (submitAnswer(correctAnswer, questionNumber)) {
+                _generateProblem(params)
+                setTimeout(function(){document.getElementById("answerBox").focus()}, 5)
+                return
+                }
+            }
+        }
+    </script>
+
 </html>
