@@ -11,8 +11,8 @@ function initGenProblems() {
             allowSubtractionNegative : false,
     
             multiplication: document.getElementById('mul').checked, // Generate multiplication problems in range _LOWER - _UPPER
-            multiplication_LOWER : 0,
-            multiplication_UPPER : 0,
+            multiplication_LOWER : document.getElementById("multiplication_LOWER").value,
+            multiplication_UPPER : document.getElementById("multiplication_UPPER").value,
             allowMultiplicationNegative : false,
     
             division: document.getElementById('div').checked, // Generate division problems in range _LOWER - _UPPER

@@ -32,3 +32,8 @@ td.wrongAnswer {
     background-color: red;
     color: white;
 }
+
+.footer {
+    padding-top: 30px;
+    z-index: -1;
+}

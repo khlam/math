@@ -13,14 +13,20 @@
     gtag('config', 'UA-147965254-1');
     </script>
 
+    <script src="./js/jquery-git.js"></script>
+
     <script src="./js/os.js"></script>
     <script src="./js/param.js"></script>
     <script src="./js/rng.js"></script>
+
+    <script src="./js/QA.js"></script> <!--Different displays depending on the problem-->
+    
+
+    <!--Generates problems-->
     <script src="./js/division.js"></script>
     <script src="./js/addition.js"></script>
     <script src="./js/subtraction.js"></script>
-    <script src="./js/QA.js"></script>
-    <script src="./js/jquery-git.js"></script>
+    <script src="./js/multiplication.js"></script>
 
     <body>
         <div class="row">
@@ -60,7 +66,14 @@
                     <input type="number" id="subtraction_UPPER" value=144></input>
                 </h3>
             </div>
-            <div id="multiplication" class="row" style="display: none">Set multiplication Params</div>
+            <div id="multiplication" class="row" style="display: none">
+                <h1>Multiplication</h1>
+                <h3>Multiplication ranges from
+                    <input type="number" id="multiplication_LOWER" value=1></input>
+                    to
+                    <input type="number" id="multiplication_UPPER" value=144></input>
+                </h3>
+            </div>
     
             <div id="division" class="row" style="display: none">
                 <div class= "col-12" style='text-align: center;'>

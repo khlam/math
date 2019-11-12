@@ -12,7 +12,9 @@ function generateProblem(param) {
                 })
                 break;
             case 'multiplication':
-                console.log("not impl")
+                generateMultiplication(param).then(result => {
+                    return resolve(result)
+                })
                 break;
             case 'division':
                 generateDivision(param).then(result => {

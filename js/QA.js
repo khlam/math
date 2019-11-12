@@ -5,7 +5,7 @@ function question(data){
         case 'subtraction':
             return `${data.a} - ${data.b}`
         case 'multiplication':
-            return `not impl`
+            return `${data.a} x ${data.b}`
         case 'division':
             return `${data.a} / ${data.b}`
         default:
