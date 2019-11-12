@@ -1,9 +1,9 @@
 function question(data){
     switch(data.t) {
         case 'addition':
-            return `not impl`
+            return `${data.a} + ${data.b}`
         case 'subtraction':
-            return `not impl`
+            return `${data.a} - ${data.b}`
         case 'multiplication':
             return `not impl`
         case 'division':

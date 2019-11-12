@@ -17,6 +17,8 @@
     <script src="./js/param.js"></script>
     <script src="./js/rng.js"></script>
     <script src="./js/division.js"></script>
+    <script src="./js/addition.js"></script>
+    <script src="./js/subtraction.js"></script>
     <script src="./js/QA.js"></script>
     <script src="./js/jquery-git.js"></script>
 
@@ -25,7 +27,7 @@
             <div class= "col-10">
                 <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a>/math</h2>
                 <h4 name="title-banner">Simple math practice generator.</h4>
-                <p name="title-banner">Refresh your math skills by solving addition, subtraction, division and multiplication problems. Runs in your browser session, refresh to reset.</p> 
+                <p name="title-banner">Practice your maths. Solve addition, subtraction, division and multiplication problems. Refresh to reset.</p> 
             </div>
         </div>
 
@@ -39,8 +41,25 @@
                 </div>
             </div>
         
-            <div id="addition" class="row" style="display: none">Set addition Params</div>
-            <div id="subtraction" class="row" style="display: none">Set subtraction Params</div>
+            <div id="addition" class="row" style="display: none">
+                <div class= "col-12" style='text-align: center;'>
+                    <h1>Addition</h1>
+                    <h3>Addition ranges from
+                        <input type="number" id="addition_LOWER" value=1></input>
+                        to
+                        <input type="number" id="addition_UPPER" value=144></input>
+                    </h3>
+                </div>
+            </div>
+
+            <div id="subtraction" class="row" style="display: none">
+                <h1>Subtraction</h1>
+                <h3>Subtraction ranges from
+                    <input type="number" id="subtraction_LOWER" value=1></input>
+                    to
+                    <input type="number" id="subtraction_UPPER" value=144></input>
+                </h3>
+            </div>
             <div id="multiplication" class="row" style="display: none">Set multiplication Params</div>
     
             <div id="division" class="row" style="display: none">

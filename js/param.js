@@ -1,13 +1,13 @@
 function initGenProblems() {
     let init = {
             addition: document.getElementById('add').checked, // Generate addition problems in range _LOWER - _UPPER
-            addition_LOWER: 0, // Lower bound
-            addition_UPPER: 0, // Upper bound
-            allow_LOWERdditionNegative: false,
+            addition_LOWER: document.getElementById("addition_LOWER").value, // Lower bound
+            addition_UPPER: document.getElementById("addition_UPPER").value, // Upper bound
+            allowAdditionNegative: false,
     
             subtraction: document.getElementById('sub').checked, // Generate subtraction problems in range _LOWER - _UPPER
-            subtraction_LOWER : 0, 
-            subtraction_UPPER : 0,
+            subtraction_LOWER : document.getElementById("subtraction_LOWER").value, 
+            subtraction_UPPER : document.getElementById("subtraction_UPPER").value,
             allowSubtractionNegative : false,
     
             multiplication: document.getElementById('mul').checked, // Generate multiplication problems in range _LOWER - _UPPER

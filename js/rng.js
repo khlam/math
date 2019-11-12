@@ -2,10 +2,14 @@ function generateProblem(param) {
     return new Promise((resolve) => {
         switch(randomProblemType(param)) {
             case 'addition':
-                console.log("not impl")
+                generateAddition(param).then(result => {
+                    return resolve(result)
+                })
                 break;
             case 'subtraction':
-                console.log("not impl")
+                generateSubtraction(param).then(result => {
+                    return resolve(result)
+                })
                 break;
             case 'multiplication':
                 console.log("not impl")
