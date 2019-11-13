@@ -2,5 +2,4 @@
 > Practice your maths. Solve addition, subtraction, division and multiplication problems.
 
 ## Why?
-Math is hard, and it gets even harder without practice. Make sure your math skills are up to snuff with this quick tool.
-
+Math is hard, but it gets easier with practice.  Refresh your maths by solving addition, subtraction, division and multiplication problems.
