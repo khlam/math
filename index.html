@@ -37,20 +37,46 @@
                 <p name="title-banner">Practice your maths. Solve addition, subtraction, division and multiplication problems. Refresh to reset.</p> 
             </div>
         </div>
-
+        
         <div id="params">
-            <div id="chooseProblems" class="row">
-                <div class= "col-12" style='text-align: center;'>
-                    <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition</input>
-                    <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction</input>
-                    <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication</input>
-                    <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division</input>
+            <div class="row">
+                <div class= "col-1"></div>
+                <div class= "col-10">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="add" onClick="params.init = initGenProblems()">Addition</input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="sub" onClick="params.init = initGenProblems()">Subtraction</input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="mul" onClick="params.init = initGenProblems()">Multiplication</input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="div" onClick="params.init = initGenProblems()">Division</input>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        
+            
+            <div class="row">
+                <div class= "col-1"></div>
+                <div class= "col-10">
+                    <button id="startButton" onClick="_generateProblem(params)" style="display: none">Start!</button>
+                </div>
+            </div>
+    
             <div id="addition" class="row" style="display: none">
-                <div class= "col-12" style='text-align: center;'>
-                    <h1>Addition</h1>
+                <div class= "col-1"></div>
+                <div class= "col-8">
                     <h3>Addition ranges from
                         <input type="number" id="addition_LOWER" value=1></input>
                         to
@@ -58,27 +84,32 @@
                     </h3>
                 </div>
             </div>
-
+    
             <div id="subtraction" class="row" style="display: none">
-                <h1>Subtraction</h1>
-                <h3>Subtraction ranges from
-                    <input type="number" id="subtraction_LOWER" value=1></input>
-                    to
-                    <input type="number" id="subtraction_UPPER" value=144></input>
-                </h3>
+                <div class= "col-1"></div>
+                <div class= "col-8">
+                    <h3>Subtraction ranges from
+                        <input type="number" id="subtraction_LOWER" value=1></input>
+                        to
+                        <input type="number" id="subtraction_UPPER" value=144></input>
+                    </h3>
+                </div>
             </div>
+            
             <div id="multiplication" class="row" style="display: none">
-                <h1>Multiplication</h1>
-                <h3>Multiplication ranges from
-                    <input type="number" id="multiplication_LOWER" value=1></input>
-                    to
-                    <input type="number" id="multiplication_UPPER" value=144></input>
-                </h3>
+                <div class= "col-1"></div>
+                <div class= "col-8">
+                    <h3>Multiplication ranges from
+                        <input type="number" id="multiplication_LOWER" value=1></input>
+                        to
+                        <input type="number" id="multiplication_UPPER" value=144></input>
+                    </h3>
+                </div>
             </div>
     
             <div id="division" class="row" style="display: none">
-                <div class= "col-12" style='text-align: center;'>
-                    <h1>Division</h1>
+                <div class= "col-1"></div>
+                <div class= "col-8">
                     <h3>Dividend ranges from
                         <input type="number" id="divisionDividend_LOWER" value=1></input>
                         to
@@ -91,19 +122,25 @@
                     </h3>
                 </div>
             </div>
-            
-            <button id="startButton" onClick="_generateProblem(params)" style="display: none">Start!</button>
-
         </div>
+
         <div id="currentProblem" class="row"></div>
 
         <div id="questionHistory" class="row">
-            <table id="questionHistoryTable"></table>
+            <div class= "col-2"></div>
+            <div class= "col-8">
+                <table id="questionHistoryTable"></table>
+            </div>
+            
         </div>
 
-        <div class="footer">
-            <p><a href="https://khlam.github.io/" style="text-decoration:none">Contact</a> - <a href="https://github.com/khlam/math" style="text-decoration:none">Open Source</a></p>
-        </div>
+        <footer class="footer">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4"><a href="https://github.com/khlam/math">source</a></div>
+            </div>
+        </footer>
+
     </body>
     
     <script>        
